@@ -1,6 +1,7 @@
-// ignore_for_file: use_key_in_widget_constructors
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'package:tunsl/splash_screen.dart';
+import 'tips.dart';
 
 void main() {
   runApp(TunSL());
@@ -9,10 +10,14 @@ void main() {
 class TunSL extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       home: SplashScreen(),
+      initialRoute: '/',
+      routes: {
+        '/tips': (context) => Tips(),
+      },
     );
   }
 }
