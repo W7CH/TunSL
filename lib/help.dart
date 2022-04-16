@@ -1,15 +1,15 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'widgets/tip_page.dart';
+import 'widgets/help_page.dart';
 
-class Tips extends StatefulWidget {
+class Help extends StatefulWidget {
   @override
-  _Tips createState() => _Tips();
+  _Help createState() => _Help();
 }
 
-class _Tips extends State<Tips> {
-  final int _numPages = 7;
+class _Help extends State<Help> {
+  final int _numPages = 2;
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
 
@@ -64,6 +64,7 @@ class _Tips extends State<Tips> {
                 SizedBox(
                   height: 600.0,
                   child: PageView(
+                    scrollDirection: Axis.vertical,
                     physics: ClampingScrollPhysics(),
                     controller: _pageController,
                     onPageChanged: (int page) {
@@ -72,34 +73,16 @@ class _Tips extends State<Tips> {
                       });
                     },
                     children: <Widget>[
-                      TipPage(
-                          pictpath: 'assets/colors.png',
-                          tip:
-                              'Avoid wearing warm colors like red, orange and yellow and use instead cool colors such as blue, purple and green since they are peaceful colors and give a sense of calm and relaxation anywhere'),
-                      TipPage(
-                          pictpath: 'assets/looking-away.png',
-                          tip:
-                              'Do not look away from the deaf person while he is talking to you'),
-                      TipPage(
+                      HelpPage(
                           pictpath: 'assets/camera.png',
-                          tip:
-                              'Do not ignore the deaf person, for fear of not being able to understand, because he knows how to deliver information'),
-                      TipPage(
-                          pictpath: 'assets/camera.png',
-                          tip:
-                              'Do not move your head indicating that you understand his signs, when you did not understand his intention, because this would hurt his feelings'),
-                      TipPage(
-                          pictpath: 'assets/camera.png',
-                          tip: 'Most deaf people read lip movement, so don'
-                              't be afraid to communicate with them in words, but be clear and reduce your speaking speed'),
-                      TipPage(
-                          pictpath: 'assets/camera.png',
-                          tip:
-                              'Give the deaf person a pen and paper and ask them to draw or write what they want to say instead of giving up'),
-                      TipPage(
-                          pictpath: 'assets/camera.png',
-                          tip:
-                              'Do not talk to a deaf person unless your lips are exposed to them'),
+                          title: 'Real-time detection',
+                          role:
+                              'It allows the opening of the camera in order to detect signs in real time mode. Once the camera is launched, the signs are filmed and those recognized are displayed on the screen'),
+                      HelpPage(
+                          pictpath: 'assets/photo.png',
+                          title: 'Detection with camera',
+                          role:
+                              'It consists in picking an image from the phone storage to detect signs in it. The recognized signs are then displayed on the screen'),
                     ],
                   ),
                 ),
