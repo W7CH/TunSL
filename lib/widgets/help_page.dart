@@ -20,13 +20,15 @@ class HelpPage extends StatelessWidget {
               image: AssetImage(
                 pictpath,
               ),
-              height: 200.0,
-              width: 200.0,
+              height: 150.0,
+              width: 150.0,
             ),
           ),
           SizedBox(height: 30.0),
           Text(
             title,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 15.0, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: 15.0),
           Text(

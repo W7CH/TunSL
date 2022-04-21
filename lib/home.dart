@@ -17,8 +17,8 @@ class Home extends StatelessWidget {
           expandableCard: ExpandableCard(
               backgroundColor: Colors.white,
               hasRoundedCorners: true,
-              minHeight: 5.0,
-              maxHeight: 250.0,
+              minHeight: 80.0,
+              maxHeight: 300.0,
               children: [
                 Column(
                   children: [

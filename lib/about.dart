@@ -16,7 +16,7 @@ class AboutUs extends StatelessWidget {
             ),
           ),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('Idea of TunSL?'),
+            Text('Brought to you by:'),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

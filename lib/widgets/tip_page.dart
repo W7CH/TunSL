@@ -27,6 +27,7 @@ class TipPage extends StatelessWidget {
           Text(
             tip,
             textAlign: TextAlign.justify,
+            style: TextStyle(fontSize: 15.0),
           ),
         ],
       ),
