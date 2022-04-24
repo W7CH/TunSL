@@ -9,8 +9,9 @@ class TipPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.maybeOf(context)!.size;
     return Padding(
-      padding: EdgeInsets.all(40.0),
+      padding: EdgeInsets.symmetric(horizontal: 60,vertical: 40),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -19,15 +20,18 @@ class TipPage extends StatelessWidget {
               image: AssetImage(
                 pictpath,
               ),
-              height: 200.0,
-              width: 200.0,
+              height: screenSize.width * 0.5,
+              width: screenSize.height* 0.5,
             ),
           ),
           SizedBox(height: 45.0),
           Text(
             tip,
             textAlign: TextAlign.justify,
-            style: TextStyle(fontSize: 15.0),
+            style: TextStyle(color: Color(0xff7C7C7A),
+                fontFamily: 'LibreFranklin',
+                fontWeight: FontWeight.w100,
+                fontSize: 16),
           ),
         ],
       ),

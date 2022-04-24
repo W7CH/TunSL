@@ -63,7 +63,7 @@ class _Tips extends State<Tips> {
                     ),
                   ),
                   SizedBox(
-                    height: 600.0,
+                    height: 500.0,
                     child: PageView(
                       physics: ClampingScrollPhysics(),
                       controller: _pageController,
@@ -76,27 +76,27 @@ class _Tips extends State<Tips> {
                         TipPage(
                             pictpath: 'assets/colors.png',
                             tip:
-                                'Avoid wearing warm colors like red, orange and yellow and use instead cool colors such as blue, purple and green since they are peaceful colors and give a sense of calm and relaxation anywhere'),
+                                '◉ Avoid wearing warm colors like red, orange and yellow and use instead cool colors such as blue, purple and green since they are peaceful colors and give a sense of calm and relaxation anywhere.'),
                         TipPage(
-                            pictpath: 'assets/looking-away.png',
+                            pictpath: 'assets/talk.png',
                             tip:
-                                'Do not look away from the deaf person while he is talking to you\nDo not talk to a deaf person unless your lips are exposed to them'),
+                                '◉ Do not look away from the deaf person while he is talking to you.\n\n◉ Do not talk to a deaf person unless your lips are exposed to them.'),
                         TipPage(
-                            pictpath: 'assets/silence1.png',
+                            pictpath: 'assets/comm.png',
                             tip:
-                                'Do not ignore the deaf person, for fear of not being able to understand, because he knows how to deliver information'),
+                                '◉ Do not ignore the deaf person, for fear of not being able to understand, because he knows how to deliver information.'),
                         TipPage(
-                            pictpath: 'assets/understand.png',
+                            pictpath: 'assets/what.png',
                             tip:
-                                'Do not move your head indicating that you understand his signs, when you did not understand his intention, because this would hurt his feelings'),
+                                '◉ Do not move your head indicating that you understand his signs, when you did not understand his intention, because this would hurt his feelings.'),
                         TipPage(
                             pictpath: 'assets/lips.png',
                             tip:
-                                'Most deaf people read lip movement, so don\'t be afraid to communicate with them in words, just be clear and reduce your speaking speed'),
+                                '◉ Most deaf people read lip movement, so don\'t be afraid to communicate with them in words, just be clear and reduce your speaking speed.'),
                         TipPage(
-                            pictpath: 'assets/penpaper.png',
+                            pictpath: 'assets/paper.png',
                             tip:
-                                'Give the deaf person a pen and paper and ask them to draw or write what they want to say instead of giving up'),
+                                '◉ Give the deaf person a pen and paper and ask them to draw or write what they want to say instead of giving up.'),
                       ],
                     ),
                   ),

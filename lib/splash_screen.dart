@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'home.dart';
 
@@ -9,23 +8,38 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> animation;
+  @override
+  dispose() {
+    controller.dispose();
+    super.dispose();
+  }
   @override
   void initState() {
     super.initState();
     _navigatetohome();
+    controller = AnimationController(
+      duration: const Duration(seconds: 5),
+      vsync: this,
+    );
+    animation = CurvedAnimation(parent: controller, curve: Curves.decelerate);
+    controller.forward();
+    controller.addListener(() {
+      //print(animation.value);
+    });
   }
 
   _navigatetohome() async {
-    await Future.delayed(const Duration(milliseconds: 3000), () {});
+    await Future.delayed(const Duration(milliseconds: 5000), () {});
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const Home()));
+        context, MaterialPageRoute(builder: (context) =>  const Home()));
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
           body: Container(
@@ -40,15 +54,18 @@ class _SplashScreenState extends State<SplashScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Container(
-                      margin: const EdgeInsets.fromLTRB(50.0, 100.0, 50.0, 0.0),
-                      child: const Image(
-                        image: AssetImage('assets/logo.png'),
-                      )),
-                  SizedBox(
+                  ScaleTransition(
+                    scale: animation,
+                    child: Container(
+                        margin: const EdgeInsets.fromLTRB(50.0, 100.0, 50.0, 0.0),
+                        child: const Image(
+                          image: AssetImage('assets/logo.png',),
+                        )),
+                  ),
+                  const SizedBox(
                     height: 20.0,
                   ),
-                  Text(
+                  const Text(
                     'TunSL',
                     style: TextStyle(
                         fontSize: 48,
@@ -56,18 +73,18 @@ class _SplashScreenState extends State<SplashScreen> {
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
-                  SizedBox(
-                    height: 40.0,
+                  const SizedBox(
+                    height: 30.0,
                   ),
-                  Text('Your voice to communicate with the world!',
+                  const Text('Your voice to communicate with the world!',
                       style: TextStyle(
                           fontSize: 10,
-                          fontFamily: 'Merriweather',
+                          fontFamily: 'LibreFranklin',
                           color: Colors.white)),
-                  SizedBox(
-                    height: 70.0,
+                  const SizedBox(
+                    height: 50.0,
                   ),
-                  CircularProgressIndicator(
+                  const CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation(Colors.white),
                   ),
                 ],
