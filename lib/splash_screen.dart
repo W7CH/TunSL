@@ -8,7 +8,8 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> animation;
   @override
@@ -16,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     controller.dispose();
     super.dispose();
   }
+
   @override
   void initState() {
     super.initState();
@@ -34,12 +36,14 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   _navigatetohome() async {
     await Future.delayed(const Duration(milliseconds: 5000), () {});
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) =>  const Home()));
+        context, MaterialPageRoute(builder: (context) => const Home()));
   }
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.maybeOf(context)!.size;
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SafeArea(
         child: Scaffold(
           body: Container(
@@ -57,9 +61,12 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                   ScaleTransition(
                     scale: animation,
                     child: Container(
-                        margin: const EdgeInsets.fromLTRB(50.0, 100.0, 50.0, 0.0),
+                        margin:
+                            const EdgeInsets.fromLTRB(50.0, 100.0, 50.0, 0.0),
                         child: const Image(
-                          image: AssetImage('assets/logo.png',),
+                          image: AssetImage(
+                            'assets/logo.png',
+                          ),
                         )),
                   ),
                   const SizedBox(
@@ -81,8 +88,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                           fontSize: 10,
                           fontFamily: 'LibreFranklin',
                           color: Colors.white)),
-                  const SizedBox(
-                    height: 50.0,
+                  SizedBox(
+                    height: screenSize.height * 0.2,
                   ),
                   const CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation(Colors.white),

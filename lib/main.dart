@@ -14,7 +14,7 @@ class TunSL extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Tunisian Sign Language',
       home: SplashScreen(),
       initialRoute: '/',
       routes: {
