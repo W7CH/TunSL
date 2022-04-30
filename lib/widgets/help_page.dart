@@ -11,7 +11,7 @@ class HelpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(40.0),
+      padding: EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -20,15 +20,16 @@ class HelpPage extends StatelessWidget {
               image: AssetImage(
                 pictpath,
               ),
-              height: 150.0,
-              width: 150.0,
+              height: 100.0,
+              width: 100.0,
             ),
           ),
-          SizedBox(height: 30.0),
+          SizedBox(height: 20.0),
           Text(
             title,
             textAlign: TextAlign.center,
-            style: TextStyle(color: Color(0xffA5678E),
+            style: TextStyle(
+                color: Color(0xffA5678E),
                 fontFamily: 'Merriweather',
                 fontSize: 18),
           ),
@@ -36,7 +37,8 @@ class HelpPage extends StatelessWidget {
           Text(
             role,
             textAlign: TextAlign.justify,
-            style: TextStyle(color: Color(0xff7C7C7A),
+            style: TextStyle(
+                color: Color(0xff7C7C7A),
                 fontFamily: 'LibreFranklin',
                 fontWeight: FontWeight.w100,
                 fontSize: 16),
