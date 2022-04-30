@@ -123,7 +123,7 @@ class Home extends StatelessWidget {
                     text: 'Detection with image',
                     pictpath: 'assets/photo.png',
                     pictwidth: screenSize.width * 0.2,
-                    cardfunc: () {})
+                    cardfunc: () {Navigator.pushNamed(context, '/staticDetection');})
               ],
             ),
           ),

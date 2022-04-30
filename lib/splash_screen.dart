@@ -82,7 +82,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                           fontFamily: 'LibreFranklin',
                           color: Colors.white)),
                   const SizedBox(
-                    height: 50.0,
+                    height: 80.0,
                   ),
                   const CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation(Colors.white),
