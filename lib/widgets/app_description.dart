@@ -13,7 +13,7 @@ class AppDescription extends StatelessWidget {
         height: screenSize.height * 0.3,
       ),
       const SizedBox(
-        height: 20.0,
+        height: 10.0,
       ),
       const Text(
         'TunSL',
@@ -24,7 +24,7 @@ class AppDescription extends StatelessWidget {
             color: Colors.white),
       ),
       SizedBox(
-        height: 10.0,
+        height: 20.0,
       ),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -34,7 +34,7 @@ class AppDescription extends StatelessWidget {
               color: Color(0xffffffff),
               fontFamily: 'LibreFranklin',
               //fontWeight: FontWeight.w100,
-              fontSize: 14),
+              fontSize: 20),
           textAlign: TextAlign.center,
         ),
       ),
