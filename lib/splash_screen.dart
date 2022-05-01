@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_const_constructors
 import 'package:flutter/material.dart';
 import 'home.dart';
 
@@ -62,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen>
                     scale: animation,
                     child: Container(
                         margin:
-                        const EdgeInsets.fromLTRB(50.0, 100.0, 50.0, 0.0),
+                            const EdgeInsets.fromLTRB(50.0, 100.0, 50.0, 0.0),
                         child: const Image(
                           image: AssetImage(
                             'assets/logo.png',
@@ -72,7 +73,7 @@ class _SplashScreenState extends State<SplashScreen>
                   const SizedBox(
                     height: 20.0,
                   ),
-                  const Text(
+                  Text(
                     'TunSL',
                     style: TextStyle(
                         fontSize: 48,
@@ -80,10 +81,10 @@ class _SplashScreenState extends State<SplashScreen>
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     height: 30.0,
                   ),
-                  const Text('Your voice to communicate with the world!',
+                  Text('Your voice to communicate with the world!',
                       style: TextStyle(
                           fontSize: 10,
                           fontFamily: 'LibreFranklin',
@@ -91,7 +92,7 @@ class _SplashScreenState extends State<SplashScreen>
                   SizedBox(
                     height: screenSize.height * 0.2,
                   ),
-                  const CircularProgressIndicator(
+                  CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation(Colors.white),
                   ),
                 ],

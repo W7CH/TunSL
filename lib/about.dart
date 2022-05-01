@@ -44,45 +44,47 @@ class _AboutUs extends State<AboutUs> {
       child: Scaffold(
         body: AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fitWidth,
-                image: AssetImage('assets/background.png'),
+          child: Expanded(
+            child: Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.fitWidth,
+                  image: AssetImage('assets/background.png'),
+                ),
               ),
-            ),
-            child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 40.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: IconButton(
-                      onPressed: () => Navigator.of(context).pop(),
-                      icon: Icon(Icons.arrow_back_ios_rounded,
-                          color: Color(0xFF23188F)),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 40.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: IconButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        icon: Icon(Icons.arrow_back_ios_rounded,
+                            color: Color(0xFF23188F)),
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    height: 600.0,
-                    child: PageView(
-                        scrollDirection: Axis.vertical,
-                        physics: ClampingScrollPhysics(),
-                        controller: _pageController,
-                        onPageChanged: (int page) {
-                          setState(() {
-                            _currentPage = page;
-                          });
-                        },
-                        children: <Widget>[AppDescription(), Owners()]),
-                  ),
-                  Column(
-                    children: _buildPageIndicator(),
-                  ),
-                ],
+                    SizedBox(
+                      height: 600.0,
+                      child: PageView(
+                          scrollDirection: Axis.vertical,
+                          physics: ClampingScrollPhysics(),
+                          controller: _pageController,
+                          onPageChanged: (int page) {
+                            setState(() {
+                              _currentPage = page;
+                            });
+                          },
+                          children: <Widget>[AppDescription(), Owners()]),
+                    ),
+                    Column(
+                      children: _buildPageIndicator(),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

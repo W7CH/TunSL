@@ -80,7 +80,7 @@ class _Tips extends State<Tips> {
                         TipPage(
                             pictpath: 'assets/talk.png',
                             tip:
-                                '◉ Do not look away from the deaf person while he is talking to you.\n\n◉ Do not talk to a deaf person unless your lips are exposed to them.'),
+                                '◉ Do not look away from the deaf person while he is talking to you.\n\n◉ Do not talk to a deaf person unless your lips are exposed to him.'),
                         TipPage(
                             pictpath: 'assets/comm.png',
                             tip:

@@ -31,14 +31,14 @@ class Help extends StatelessWidget {
             ),
             HelpPage(
                 pictpath: 'assets/camera.png',
-                title: 'Real-time detection',
-                role:
-                    'It allows the opening of the camera in order to detect signs in real time mode. Once the camera is launched, the signs are filmed and those recognized are displayed on the screen'),
-            HelpPage(
-                pictpath: 'assets/photo.png',
                 title: 'Detection with camera',
                 role:
-                    'It consists in picking an image from the phone storage to detect signs in it. The recognized signs are then displayed on the screen'),
+                    'It allows the opening of the camera in order to detect signs in real time mode. Once the camera is launched, the signs are filmed and those recognized are displayed on the screen.'),
+            HelpPage(
+                pictpath: 'assets/photo.png',
+                title: 'Detection with image',
+                role:
+                    'It consists in picking an image from the phone storage to detect signs on it. The recognized signs are then displayed on the screen.'),
           ]),
         ),
       ),

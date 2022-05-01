@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:tunsl/splash_screen.dart';
 import 'tips.dart';
-import 'staticDetection.dart';
+import 'static_detection.dart';
 import 'help.dart';
 import 'about.dart';
 
@@ -22,7 +22,7 @@ class TunSL extends StatelessWidget {
         '/tips': (context) => Tips(),
         '/help': (context) => Help(),
         '/about': (context) => AboutUs(),
-        '/staticDetection': (context) => StaticDetection(),
+        '/staticDetection': (context) => StaticDetection()
       },
     );
   }

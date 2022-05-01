@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, avoid_print
+
 import 'dart:async';
 import 'dart:io';
 import 'dart:math';
@@ -484,9 +486,13 @@ class _StaticDetectionState extends State<StaticDetection> {
                   ],
                 ),
               ),
-              SizedBox(height: 30.0,),
+              SizedBox(
+                height: 30.0,
+              ),
               stackChildren[0],
-              SizedBox(height: 20.0,),
+              SizedBox(
+                height: 20.0,
+              ),
               stackChildren[1],
             ],
           ),
