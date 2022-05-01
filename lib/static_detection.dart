@@ -409,13 +409,7 @@ class _StaticDetectionState extends State<StaticDetection> {
                             fontWeight: FontWeight.bold),
                       ),
                     ],
-                  )); /*Text(
-                    "%${res["label"]} ${(res["confidence"]*100).toStringAsFixed(2)}",
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                    ),
-                  );*/
+                  ));
                 }).toList()
               : [],
         ),

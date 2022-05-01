@@ -18,6 +18,9 @@ class Help extends StatelessWidget {
             ),
           ),
           child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+            SizedBox(
+              height: screenSize.height * 0.03,
+            ),
             Container(
               alignment: Alignment.centerLeft,
               child: IconButton(
@@ -27,7 +30,7 @@ class Help extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: screenSize.height * 0.05,
+              height: screenSize.height * 0.02,
             ),
             HelpPage(
                 pictpath: 'assets/camera.png',

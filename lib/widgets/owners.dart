@@ -8,6 +8,7 @@ class Owners extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.maybeOf(context)!.size;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Translator(
           text: 'Accomplished by:',
@@ -31,8 +32,11 @@ class Owners extends StatelessWidget {
             Column(
               children: [
                 CircleAvatar(
-                  radius: 30.0,
+                  radius: 50.0,
                   backgroundImage: AssetImage('assets/wassim.jpg'),
+                ),
+                SizedBox(
+                  height: 20.0,
                 ),
                 Text(
                   'Wassim Chakroun',
@@ -40,15 +44,18 @@ class Owners extends StatelessWidget {
                       color: Color(0xffffffff),
                       fontFamily: 'LibreFranklin',
                       //fontWeight: FontWeight.w100,
-                      fontSize: 14),
+                      fontSize: 18),
                 )
               ],
             ),
             Column(
               children: [
                 CircleAvatar(
-                  radius: 30.0,
+                  radius: 50.0,
                   backgroundImage: AssetImage('assets/riri.jpg'),
+                ),
+                SizedBox(
+                  height: 20.0,
                 ),
                 Text(
                   'Rihab Jerbi',
@@ -56,7 +63,7 @@ class Owners extends StatelessWidget {
                       color: Color(0xffffffff),
                       fontFamily: 'LibreFranklin',
                       //fontWeight: FontWeight.w100,
-                      fontSize: 14),
+                      fontSize: 18),
                 )
               ],
             ),

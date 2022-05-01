@@ -26,7 +26,7 @@ class AppDescription extends StatelessWidget {
             color: Colors.white),
       ),
       SizedBox(
-        height: 10.0,
+        height: 20.0,
       ),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
