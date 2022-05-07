@@ -22,7 +22,7 @@ class StaticDetection extends StatefulWidget {
 class _StaticDetectionState extends State<StaticDetection> {
   File? _image;
   List? _recognitions;
-  String _model = tunsl;
+  final String _model = tunsl;
   late double _imageHeight;
   late double _imageWidth;
   bool _busy = false;
@@ -88,15 +88,15 @@ class _StaticDetectionState extends State<StaticDetection> {
           break;
         case tunsl:
           res = await Tflite.loadModel(
-            model: "assets/model/tunsl_reduced.tflite",
-            labels: "assets/model/labels1.txt",
+            model: "assets/model/model_unquant.tflite",
+            labels: "assets/model/labels.txt",
             // useGpuDelegate: true,
           );
           break;
         default:
           res = await Tflite.loadModel(
-            model: "assets/model/tunsl_reduced.tflite",
-            labels: "assets/model/labels1.txt",
+            model: "assets/model/model_unquant.tflite",
+            labels: "assets/model/labels.txt",
             // useGpuDelegate: true,
           );
       }
@@ -122,20 +122,7 @@ class _StaticDetectionState extends State<StaticDetection> {
     return convertedBytes.buffer.asUint8List();
   }
 
-  Uint8List imageToByteListUint8(img.Image image, int inputSize) {
-    var convertedBytes = Uint8List(1 * inputSize * inputSize * 3);
-    var buffer = Uint8List.view(convertedBytes.buffer);
-    int pixelIndex = 0;
-    for (var i = 0; i < inputSize; i++) {
-      for (var j = 0; j < inputSize; j++) {
-        var pixel = image.getPixel(j, i);
-        buffer[pixelIndex++] = img.getRed(pixel);
-        buffer[pixelIndex++] = img.getGreen(pixel);
-        buffer[pixelIndex++] = img.getBlue(pixel);
-      }
-    }
-    return convertedBytes.buffer.asUint8List();
-  }
+  
 
   Future recognizeImage(File image) async {
     int startTime = DateTime.now().millisecondsSinceEpoch;
@@ -151,202 +138,6 @@ class _StaticDetectionState extends State<StaticDetection> {
     });
     int endTime = DateTime.now().millisecondsSinceEpoch;
     print("Inference took ${endTime - startTime}ms");
-  }
-
-  Future recognizeImageBinary(File image) async {
-    int startTime = DateTime.now().millisecondsSinceEpoch;
-    var imageBytes = (await rootBundle.load(image.path)).buffer;
-    img.Image oriImage = img.decodeJpg(imageBytes.asUint8List());
-    img.Image resizedImage = img.copyResize(oriImage, height: 224, width: 224);
-    var recognitions = await Tflite.runModelOnBinary(
-      binary: imageToByteListFloat32(resizedImage, 224, 127.5, 127.5),
-      numResults: 6,
-      threshold: 0.05,
-    );
-    setState(() {
-      _recognitions = recognitions!;
-    });
-    int endTime = DateTime.now().millisecondsSinceEpoch;
-    print("Inference took ${endTime - startTime}ms");
-  }
-
-  Future yolov2Tiny(File image) async {
-    int startTime = DateTime.now().millisecondsSinceEpoch;
-    var recognitions = await Tflite.detectObjectOnImage(
-      path: image.path,
-      model: "YOLO",
-      threshold: 0.3,
-      imageMean: 0.0,
-      imageStd: 255.0,
-      numResultsPerClass: 1,
-    );
-    // var imageBytes = (await rootBundle.load(image.path)).buffer;
-    // img.Image oriImage = img.decodeJpg(imageBytes.asUint8List());
-    // img.Image resizedImage = img.copyResize(oriImage, 416, 416);
-    // var recognitions = await Tflite.detectObjectOnBinary(
-    //   binary: imageToByteListFloat32(resizedImage, 416, 0.0, 255.0),
-    //   model: "YOLO",
-    //   threshold: 0.3,
-    //   numResultsPerClass: 1,
-    // );
-    setState(() {
-      _recognitions = recognitions!;
-    });
-    int endTime = DateTime.now().millisecondsSinceEpoch;
-    print("Inference took ${endTime - startTime}ms");
-  }
-
-  Future ssdMobileNet(File image) async {
-    int startTime = DateTime.now().millisecondsSinceEpoch;
-    var recognitions = await Tflite.detectObjectOnImage(
-      path: image.path,
-      numResultsPerClass: 1,
-    );
-    // var imageBytes = (await rootBundle.load(image.path)).buffer;
-    // img.Image oriImage = img.decodeJpg(imageBytes.asUint8List());
-    // img.Image resizedImage = img.copyResize(oriImage, 300, 300);
-    // var recognitions = await Tflite.detectObjectOnBinary(
-    //   binary: imageToByteListUint8(resizedImage, 300),
-    //   numResultsPerClass: 1,
-    // );
-    setState(() {
-      _recognitions = recognitions!;
-    });
-    int endTime = DateTime.now().millisecondsSinceEpoch;
-    print("Inference took ${endTime - startTime}ms");
-  }
-
-  Future tunSL(File image) async {
-    int startTime = DateTime.now().millisecondsSinceEpoch;
-    var recognitions = await Tflite.detectObjectOnImage(
-      path: image.path,
-      numResultsPerClass: 1,
-    );
-    // var imageBytes = (await rootBundle.load(image.path)).buffer;
-    // img.Image oriImage = img.decodeJpg(imageBytes.asUint8List());
-    // img.Image resizedImage = img.copyResize(oriImage, 300, 300);
-    // var recognitions = await Tflite.detectObjectOnBinary(
-    //   binary: imageToByteListUint8(resizedImage, 300),
-    //   numResultsPerClass: 1,
-    // );
-    setState(() {
-      _recognitions = recognitions!;
-    });
-    int endTime = DateTime.now().millisecondsSinceEpoch;
-    print("Inference took ${endTime - startTime}ms");
-  }
-
-  Future segmentMobileNet(File image) async {
-    int startTime = DateTime.now().millisecondsSinceEpoch;
-    var recognitions = await Tflite.runSegmentationOnImage(
-      path: image.path,
-      imageMean: 127.5,
-      imageStd: 127.5,
-    );
-
-    setState(() {
-      _recognitions = recognitions!;
-    });
-    int endTime = DateTime.now().millisecondsSinceEpoch;
-    print("Inference took ${endTime - startTime}");
-  }
-
-  Future poseNet(File image) async {
-    int startTime = DateTime.now().millisecondsSinceEpoch;
-    var recognitions = await Tflite.runPoseNetOnImage(
-      path: image.path,
-      numResults: 2,
-    );
-
-    print(recognitions);
-
-    setState(() {
-      _recognitions = recognitions!;
-    });
-    int endTime = DateTime.now().millisecondsSinceEpoch;
-    print("Inference took ${endTime - startTime}ms");
-  }
-
-  onSelect(model) async {
-    setState(() {
-      _busy = true;
-      _model = model;
-      _recognitions = [null];
-    });
-    await loadModel();
-
-    if (_image != null) {
-      predictImage(_image!);
-    } else {
-      setState(() {
-        _busy = false;
-      });
-    }
-  }
-
-  List<Widget> renderBoxes(Size screen) {
-    if (_recognitions == null) return [];
-
-    double factorX = screen.width;
-    double factorY = _imageHeight / _imageWidth * screen.width;
-    Color blue = const Color.fromRGBO(37, 213, 253, 1.0);
-    return _recognitions!.map((re) {
-      return Positioned(
-        left: re["rect"]["x"] * factorX,
-        top: re["rect"]["y"] * factorY,
-        width: re["rect"]["w"] * factorX,
-        height: re["rect"]["h"] * factorY,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(8.0)),
-            border: Border.all(
-              color: blue,
-              width: 2,
-            ),
-          ),
-          child: Text(
-            "${re["detectedClass"]} ${(re["confidenceInClass"] * 100).toStringAsFixed(0)}%",
-            style: TextStyle(
-              background: Paint()..color = blue,
-              color: Colors.white,
-              fontSize: 12.0,
-            ),
-          ),
-        ),
-      );
-    }).toList();
-  }
-
-  List<Widget> renderKeypoints(Size screen) {
-    if (_recognitions == null) return [];
-
-    double factorX = screen.width;
-    double factorY = _imageHeight / _imageWidth * screen.width;
-
-    var lists = <Widget>[];
-    for (var re in _recognitions!) {
-      var color = Color((Random().nextDouble() * 0xFFFFFF).toInt() << 0)
-          .withOpacity(1.0);
-      var list = re["keypoints"].values.map<Widget>((k) {
-        return Positioned(
-          left: k["x"] * factorX - 6,
-          top: k["y"] * factorY - 6,
-          width: 100,
-          height: 12,
-          child: Text(
-            "● ${k["part"]}",
-            style: TextStyle(
-              color: color,
-              fontSize: 12.0,
-            ),
-          ),
-        );
-      }).toList();
-
-      lists.addAll(list);
-    }
-
-    return lists;
   }
 
   Uint8List _getImageBinary(dynamicList) {
@@ -478,9 +269,9 @@ class _StaticDetectionState extends State<StaticDetection> {
                   ],
                 ),
               ),
-              SizedBox(height: 30.0,),
+              const SizedBox(height: 30.0,),
               stackChildren[0],
-              SizedBox(height: 20.0,),
+              const SizedBox(height: 20.0,),
               stackChildren[1],
             ],
           ),

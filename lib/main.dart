@@ -1,13 +1,23 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:tunsl/detectScreen.dart';
 import 'package:tunsl/splash_screen.dart';
 import 'tips.dart';
 import 'staticDetection.dart';
 import 'help.dart';
 import 'about.dart';
+List<CameraDescription>? cameras;
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    cameras = await availableCameras();
+  } on CameraException catch (e) {
+    print('Error: $e.code\nError Message: $e.message');
+  }
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((value) => runApp(TunSL()));
 
-void main() {
-  runApp(TunSL());
 }
 
 class TunSL extends StatelessWidget {
@@ -23,6 +33,7 @@ class TunSL extends StatelessWidget {
         '/help': (context) => Help(),
         '/about': (context) => AboutUs(),
         '/staticDetection': (context) => StaticDetection(),
+        '/dynamicDetection': (context) => DetectScreen(cameras!),
       },
     );
   }

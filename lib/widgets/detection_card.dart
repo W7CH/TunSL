@@ -12,7 +12,6 @@ class DetectionCard extends StatelessWidget {
       required this.pictpath,
       required this.pictwidth,
       required this.cardfunc});
-
   @override
   Widget build(BuildContext context) {
     return Container(

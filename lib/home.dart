@@ -118,7 +118,7 @@ class Home extends StatelessWidget {
                     text: 'Real time detection',
                     pictpath: 'assets/camera.png',
                     pictwidth: screenSize.width * 0.2,
-                    cardfunc: () {}),
+                    cardfunc: () {Navigator.pushNamed(context, '/dynamicDetection');}),
                 DetectionCard(
                     text: 'Detection with image',
                     pictpath: 'assets/photo.png',
