@@ -19,7 +19,7 @@ class Owners extends StatelessWidget {
             style: TextStyle(
                 color: Color(0xffffffff),
                 fontFamily: 'LibreFranklin',
-                //fontWeight: FontWeight.w100,
+                fontWeight: FontWeight.w300,
                 fontSize: 16),
           ),
         ),
@@ -43,7 +43,6 @@ class Owners extends StatelessWidget {
                   style: TextStyle(
                       color: Color(0xffffffff),
                       fontFamily: 'LibreFranklin',
-                      //fontWeight: FontWeight.w100,
                       fontSize: 18),
                 )
               ],
@@ -62,7 +61,6 @@ class Owners extends StatelessWidget {
                   style: TextStyle(
                       color: Color(0xffffffff),
                       fontFamily: 'LibreFranklin',
-                      //fontWeight: FontWeight.w100,
                       fontSize: 18),
                 )
               ],
@@ -81,7 +79,7 @@ class Owners extends StatelessWidget {
             style: TextStyle(
                 color: Color(0xffffffff),
                 fontFamily: 'LibreFranklin',
-                fontWeight: FontWeight.w100,
+                fontWeight: FontWeight.w300,
                 fontSize: 16),
           ),
         ),

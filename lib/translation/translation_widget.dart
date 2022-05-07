@@ -44,6 +44,12 @@ class _TranslatorState extends State<Translator> {
           default:
             if (snapshot.hasError) {
               translation = 'Checking Network!';
+              /*showDialog(
+                  context: context,
+                  builder: (_) => AlertDialog(
+                        title: Text('Network problem'),
+                        content: Text('Please connect to a network!'),
+                      ));*/
             } else {
               translation = snapshot.data;
             }

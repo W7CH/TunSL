@@ -14,7 +14,7 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -61,6 +61,7 @@ class HelpPage extends StatelessWidget {
             builder: (translated) => Text(
               translated!,
               textAlign: TextAlign.justify,
+              //textDirection: TextDirection.rtl,
               style: TextStyle(
                   color: Color(0xff7C7C7A),
                   fontFamily: 'LibreFranklin',
