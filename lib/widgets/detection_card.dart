@@ -1,5 +1,7 @@
 // ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors_in_immutables, prefer_const_constructors
 import 'package:flutter/material.dart';
+import 'package:tunsl/translation/translation_widget.dart';
+import 'package:tunsl/translation/globals.dart' as globals;
 
 class DetectionCard extends StatelessWidget {
   late final String text;
@@ -34,12 +36,17 @@ class DetectionCard extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                text,
-                style: TextStyle(
-                    color: Color(0xffA5678E),
-                    fontFamily: 'Merriweather',
-                    fontSize: 14),
+              Translator(
+                text: text,
+                fromLanguage: globals.fromLanguage,
+                toLanguage: globals.toLanguage,
+                builder: (translated) => Text(
+                  translated!,
+                  style: TextStyle(
+                      color: Color(0xffA5678E),
+                      fontFamily: 'Merriweather',
+                      fontSize: 14),
+                ),
               ),
               Image.asset(pictpath, height: 100, width: pictwidth),
             ],

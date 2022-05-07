@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:tunsl/detectScreen.dart';
 import 'package:tunsl/splash_screen.dart';
 import 'tips.dart';
-import 'staticDetection.dart';
+import 'static_detection.dart';
 import 'help.dart';
 import 'about.dart';
 List<CameraDescription>? cameras;

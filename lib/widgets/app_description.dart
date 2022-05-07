@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 import 'package:flutter/material.dart';
+import 'package:tunsl/translation/translation_widget.dart';
+import 'package:tunsl/translation/globals.dart' as globals;
 
 class AppDescription extends StatelessWidget {
   @override
@@ -12,10 +14,10 @@ class AppDescription extends StatelessWidget {
         ),
         height: screenSize.height * 0.3,
       ),
-      const SizedBox(
-        height: 10.0,
+      SizedBox(
+        height: 20.0,
       ),
-      const Text(
+      Text(
         'TunSL',
         style: TextStyle(
             fontSize: 20,
@@ -28,14 +30,20 @@ class AppDescription extends StatelessWidget {
       ),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Text(
-          'TunSL is a mobile application allowing the recognition of Tunisian sign language and its translation into text.',
-          style: TextStyle(
-              color: Color(0xffffffff),
-              fontFamily: 'LibreFranklin',
-              //fontWeight: FontWeight.w100,
-              fontSize: 20),
-          textAlign: TextAlign.center,
+        child: Translator(
+          text:
+              'TunSL is a mobile application allowing the recognition of Tunisian sign language and its translation into text.',
+          fromLanguage: globals.fromLanguage,
+          toLanguage: globals.toLanguage,
+          builder: (translated) => Text(
+            translated!,
+            style: TextStyle(
+                color: Color(0xffffffff),
+                fontFamily: 'LibreFranklin',
+                //fontWeight: FontWeight.w100,
+                fontSize: 14),
+            textAlign: TextAlign.justify,
+          ),
         ),
       ),
     ]);

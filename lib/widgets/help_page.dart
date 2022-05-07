@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 import 'package:flutter/material.dart';
+import 'package:tunsl/translation/translation_widget.dart';
+import 'package:tunsl/translation/globals.dart' as globals;
 
 class HelpPage extends StatelessWidget {
   late final String pictpath;
@@ -12,7 +14,7 @@ class HelpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 20.0, vertical: 20.0),
-      padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+      padding: EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -37,24 +39,35 @@ class HelpPage extends StatelessWidget {
               width: 100.0,
             ),
           ),
-          //SizedBox(height: 20.0),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Color(0xffA5678E),
-                fontFamily: 'Merriweather',
-                fontSize: 18),
+          SizedBox(height: 20.0),
+          Translator(
+            text: title,
+            fromLanguage: globals.fromLanguage,
+            toLanguage: globals.toLanguage,
+            builder: (translated) => Text(
+              translated!,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color(0xffA5678E),
+                  fontFamily: 'Merriweather',
+                  fontSize: 18),
+            ),
           ),
-          //SizedBox(height: 15.0),
-          Text(
-            role,
-            textAlign: TextAlign.justify,
-            style: TextStyle(
-                color: Color(0xff7C7C7A),
-                fontFamily: 'LibreFranklin',
-                fontWeight: FontWeight.w100,
-                fontSize: 16),
+          SizedBox(height: 15.0),
+          Translator(
+            text: role,
+            fromLanguage: globals.fromLanguage,
+            toLanguage: globals.toLanguage,
+            builder: (translated) => Text(
+              translated!,
+              textAlign: TextAlign.justify,
+              //textDirection: TextDirection.rtl,
+              style: TextStyle(
+                  color: Color(0xff7C7C7A),
+                  fontFamily: 'LibreFranklin',
+                  fontWeight: FontWeight.w300,
+                  fontSize: 16),
+            ),
           ),
         ],
       ),

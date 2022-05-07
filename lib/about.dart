@@ -40,6 +40,7 @@ class _AboutUs extends State<AboutUs> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize = MediaQuery.maybeOf(context)!.size;
     return SafeArea(
       child: Scaffold(
         body: AnnotatedRegion<SystemUiOverlayStyle>(
@@ -67,7 +68,7 @@ class _AboutUs extends State<AboutUs> {
                     ),
                   ),
                   SizedBox(
-                    height: 600.0,
+                    height: screenSize.height * 2 / 3,
                     child: PageView(
                         scrollDirection: Axis.vertical,
                         physics: ClampingScrollPhysics(),
